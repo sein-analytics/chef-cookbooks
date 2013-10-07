@@ -9,9 +9,9 @@ unjoin_command = "#{node[:zendserver][:zsmanage]} cluster-remove-server #{node_i
 log "Removing server node #{node['hostname']} from cluster"
 log "command: #{unjoin_command}"
 
-execute "cluster-unjoin-server" do
-	command unjoin_command
-	ignore_failure false
-#	retries 5
-#	retry_delay 3
-end
+#execute "cluster-unjoin-server" do
+#	command unjoin_command
+#	ignore_failure false
+##	retries 5
+##	retry_delay 3
+#end
