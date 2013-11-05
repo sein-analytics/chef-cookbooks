@@ -28,7 +28,7 @@ package "libgearman-dev" do
   action :install
 end
 
-package "gearman"
+package "gearman" do
   action :install
 end
 
