@@ -8,10 +8,10 @@
 #
 
 #install igbinary from PECL
-php_pear "igbinary" do
+zendserver_pear "igbinary" do
   action :install
 end
 
-php_pear "gearman" do
+zendserver_pear "gearman" do
   action :install
 end
