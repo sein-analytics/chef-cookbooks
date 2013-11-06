@@ -28,7 +28,8 @@ package "libgearman-dev" do
   action :install
 end
 
-package "gearman" do
+package "gearman-job-server" do
+  version "0.27-5ubuntu3"
   action :install
 end
 
