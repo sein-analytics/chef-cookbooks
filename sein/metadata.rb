@@ -8,4 +8,5 @@ version          '0.1.0'
 
 depends "zendserver"
 depends "apt"
+depends "database"
 depends "mysql"
