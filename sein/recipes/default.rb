@@ -15,24 +15,3 @@ end
 zendserver_pear "igbinary" do
   action :install
 end
-
-apt_repository "gearman" do
-  uri "http://ppa.launchpad.net/gearman-developers/ppa/ubuntu"
-  distribution node['lsb']['codename']
-  components ["main"]
-  keyserver "keyserver.ubuntu.com"
-  key "1C73E014"
-end
-
-package "libgearman-dev" do
-  action :install
-end
-
-package "gearman-job-server" do
-  version "0.27-5ubuntu3"
-  action :install
-end
-
-zendserver_pear "gearman" do
-  action :install
-end
