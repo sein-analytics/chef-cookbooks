@@ -3,6 +3,54 @@ yum Cookbook CHANGELOG
 This file is used to list changes made in each version of the yum cookbook.
 
 
+v3.0.4 (2013-12-29)
+-------------------
+### Bug
+- **[COOK-4156](https://tickets.opscode.com/browse/COOK-4156)** - yum cookbook creates a yum.conf with "cachefir" directive
+
+
+v3.0.2
+------
+Updating globalconfig provider for Chef 10 compatability
+
+
+v3.0.0
+------
+3.0.0
+Major rewrite with breaking changes.
+Recipes broken out into individual cookbooks
+yum_key resource has been removed
+yum_repository resource now takes gpgkey as a URL directly
+yum_repository actions have been reduced to :create and :delete
+'name' has been changed to repositoryid to avoid ambiguity
+chefspec test coverage
+gpgcheck is set to 'true' by default and must be explicitly disabled
+
+
+v2.4.4
+------
+Reverting to Ruby 1.8 hash syntax.
+
+
+v2.4.2
+------
+[COOK-3275] LWRP repository.rb :add method fails to create yum repo in
+some cases which causes :update to fail Amazon rhel
+
+
+v2.4.0
+------
+### Improvement
+- [COOK-3025] - Allow per-repo proxy definitions
+
+
+v2.3.4
+------
+### Improvement
+- **[COOK-3689](https://tickets.opscode.com/browse/COOK-3689)** - Fix warnings about resource cloning
+- **[COOK-3574](https://tickets.opscode.com/browse/COOK-3574)** - Add missing "description" field in metadata
+
+
 v2.3.2
 ------
 ### Bug
@@ -60,7 +108,7 @@ v2.0.2
 
 v2.0.0
 ------
-This version changes the behavior of the EPEL recipe (most commonly used in other Opscode cookbooks) on Amazon, and removes an attribute, `node['yum']['epel_release']`. See the README for details.
+This version changes the behavior of the EPEL recipe (most commonly used in other Chef cookbooks) on Amazon, and removes an attribute, `node['yum']['epel_release']`. See the README for details.
 
 - [COOK-1772] - Simplify management of EPEL with LWRP
 
