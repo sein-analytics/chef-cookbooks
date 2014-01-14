@@ -1,8 +1,18 @@
+COMPOSER_HOME = '/home/vagrant/.composer'
+
 directory "#{node[:sein][:project_root]}/data/logs" do
 	mode 0777
 	action :create
 	recursive true
 end
+
+# create COMPOSER_HOME and set manually 
+directory COMPOSER_HOME do
+	user "vagrant"
+	group "vagrant"
+	action :create
+end
+
 
 # Not using templates to keep process centralized - using Phing for replacements so that CI server can also call task
 execute "phing tasks" do
@@ -42,4 +52,5 @@ execute "phing tasks" do
   user "vagrant"
   group "vagrant"
   cwd node[:sein][:project_root]
+  environment ({"COMPOSER_HOME" => COMPOSER_HOME})
 end

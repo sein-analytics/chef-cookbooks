@@ -1,0 +1,20 @@
+zend_extension=/usr/local/zend/lib/php_extensions/xdebug.so
+zend_extension=/usr/local/zend/lib/ZendExtensionManager.so
+xdebug.remote_enable=1
+xdebug.remote_connect_back=1
+xdebug.remote_port=9000
+xdebug.remote_handler="dbgp"
+
+; Log message verbosity level.
+zend_extension_manager.log_verbosity_level=1
+
+; The maximum size of the log file before it is rotated (units: MBytes)
+zend_extension_manager.log_rotation_size=10
+
+; The path to the location of the load file. The load file contains the information about the extensions' loading order
+zend_extension_manager.load_order_file=zem_order
+
+; UNIX only: Activates SIGSEGV and SIGABRT signal handlers.
+zend_extension_manager.activate_signal_handlers=true
+
+; Interval to check for license updates (in seconds). Set it to 0 to disable license checking.

@@ -16,7 +16,6 @@ bs_command << " -r #{production}" unless production.nil? || production.empty?
 bs_command << " -e #{admin_email}" unless admin_email.nil? || admin_email.empty?
 bs_command << " -d #{devpassword}" unless dev_password.nil? || dev_password.empty?
 
-
 execute "create-api-key" do
   command "/usr/local/zend/bin/zs-manage api-keys-add-key -n #{node[:zendserver][:apikeyname]} -s #{node[:zendserver][:apikeysecret]}"
   retries 5
