@@ -1,4 +1,6 @@
-default[:sein][:project_root]					= ''
+default[:sein][:project_root]					= '/vagrant_data'
+default[:sein][:server_name]					= 'sein.vagrant'
+default[:sein][:server_aliases]					= ['sein']
 
 default[:sein][:display_startup_errors] 		= 0
 default[:sein][:display_errors] 				= 0
