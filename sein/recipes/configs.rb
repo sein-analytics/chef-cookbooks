@@ -13,7 +13,6 @@ directory COMPOSER_HOME do
 	action :create
 end
 
-
 # Not using templates to keep process centralized - using Phing for replacements so that CI server can also call task
 execute "phing tasks" do
   command %Q{
@@ -48,9 +47,21 @@ execute "phing tasks" do
 -Dapplication.doctrine_db_password="#{node[:sein][:doctrine_db_password]}" \
 -Dapplication.doctrine_db_socket="#{node[:sein][:doctrine_db_socket]}" \
 -Dapplication.doctrine_cache_adapter_class="#{node[:sein][:doctrine_cache_adapter_class]}" \
--Dapplication.doctrine_autogenerate_classes="#{node[:sein][:doctrine_autogenerate_classes]}"}
+-Dapplication.doctrine_autogenerate_classes="#{node[:sein][:doctrine_autogenerate_classes]}" \
+-Dapplication.mongodb_host="#{node[:sein][:mongodb_host]}" \
+-Dapplication.mongodb_port="#{node[:sein][:mongodb_port]}" \
+-Dapplication.mongodb_db="#{node[:sein][:mongodb_db]}" \
+-Dapplication.mongodb_user="#{node[:sein][:mongodb_user]}" \
+-Dapplication.mongodb_pass="#{node[:sein][:mongodb_pass]}"
+}
   user "vagrant"
   group "vagrant"
   cwd node[:sein][:project_root]
   environment ({"COMPOSER_HOME" => COMPOSER_HOME})
+end
+
+template "/home/vagrant/.zf.ini" do
+	source ".zf.ini.erb"
+	user "vagrant"
+	group "vagrant"
 end

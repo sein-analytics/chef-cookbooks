@@ -6,7 +6,10 @@
  * Use this file to override the defaults in /config/config.default.php
  */
 return array(
-  'profiler.enable' => function() { 
-     return strpos($_SERVER['REQUEST_URI'], 'run-collateral-scenario') !== false;
+  'profiler.enable' => function() {
+  	//Comment out to enable profiling
+	return false;
+
+    return isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], 'run-collateral-scenario') !== false;
   }
 );

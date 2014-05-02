@@ -38,5 +38,11 @@ default[:sein][:doctrine_db_user] 				= ''
 default[:sein][:doctrine_db_password] 			= ''
 default[:sein][:doctrine_db_socket] 			= ''
 
+default[:sein][:mongodb_host] 					= ''
+default[:sein][:mongodb_port] 					= ''
+default[:sein][:mongodb_db] 					= ''
+default[:sein][:mongodb_user] 					= ''
+default[:sein][:mongodb_pass] 					= ''
+
 default[:sein][:doctrine_cache_adapter_class]	= 'Doctrine\Common\Cache\ArrayCache'
 default[:sein][:doctrine_autogenerate_classes]  = 'true'
