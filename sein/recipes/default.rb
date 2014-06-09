@@ -12,9 +12,9 @@ package "automake" do
 end
 
 #install igbinary from PECL
-zendserver_pear "igbinary" do
-  action :install
-end
+#zendserver_pear "igbinary" do
+#  action :install
+#end
 
 package "git" do
   action :install

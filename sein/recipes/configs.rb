@@ -52,7 +52,8 @@ execute "phing tasks" do
 -Dapplication.mongodb_port="#{node[:sein][:mongodb_port]}" \
 -Dapplication.mongodb_db="#{node[:sein][:mongodb_db]}" \
 -Dapplication.mongodb_user="#{node[:sein][:mongodb_user]}" \
--Dapplication.mongodb_pass="#{node[:sein][:mongodb_pass]}"
+-Dapplication.mongodb_pass="#{node[:sein][:mongodb_pass]}" \
+-Dapplication.mongodb_pass="#{node[:sein][:gearman_servers]}" 
 }
   user "vagrant"
   group "vagrant"

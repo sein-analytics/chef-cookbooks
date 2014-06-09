@@ -44,5 +44,7 @@ default[:sein][:mongodb_db] 					= ''
 default[:sein][:mongodb_user] 					= ''
 default[:sein][:mongodb_pass] 					= ''
 
+default[:sein][:gearman_servers]				= '127.0.0.1:4730'
+
 default[:sein][:doctrine_cache_adapter_class]	= 'Doctrine\Common\Cache\ArrayCache'
 default[:sein][:doctrine_autogenerate_classes]  = 'true'
