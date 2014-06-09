@@ -102,7 +102,7 @@ template "#{home}/config.inc.php" do
 	source 'config.inc.php.erb'
 	owner user
 	group group
-	mode 00644
+	mode 00644 #changed to allow apahce to read the config file - ieally group should belomg to apache
 end
 
 if (node['phpmyadmin'].attribute?('fpm') && node['phpmyadmin']['fpm'])

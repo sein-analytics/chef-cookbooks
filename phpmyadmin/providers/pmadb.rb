@@ -26,7 +26,7 @@ action :create do
 		source 'phpmyadmin.sql.erb'
 		owner 'root'
 		group 'root'
-		mode 00640
+		mode 00644
 		variables({
 			:pma_db => new_resource.pma_database,
 			:pma_user => new_resource.pma_username,
