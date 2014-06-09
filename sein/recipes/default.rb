@@ -11,6 +11,10 @@ package "automake" do
   action :install
 end
 
+package "build-essential" do
+  action :install
+end
+
 #install igbinary from PECL
 #zendserver_pear "igbinary" do
 #  action :install
