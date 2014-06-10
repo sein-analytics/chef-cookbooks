@@ -27,7 +27,7 @@ end
 
 bash "replace listen address" do
     code <<-EOH
-sed 's/--listen=".*"/listen=0.0.0.0/' /etc/default/gearman-job-server
+sudo sed -i 's/"--listen=.*"/"--listen=0.0.0.0"/' /etc/default/gearman-job-server
 EOH
 end
 
