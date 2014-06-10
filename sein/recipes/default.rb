@@ -6,6 +6,9 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+package "autoconf" do
+        action :install
+end
 
 package "automake" do
   action :install

@@ -25,14 +25,16 @@ package "libgearman-dev" do
         action :install
 end
 
+bash "replace listen address" do
+    code <<-EOH
+sed 's/--listen=".*"/listen=0.0.0.0/' /etc/default/gearman-job-server
+EOH
+end
+
+service "gearman-job-server" do
+        action :stop
+end
+
 service "gearman-job-server" do
         action :start
-end
-
-package "autoconf" do
-        action :install
-end
-
-package "build-essential" do
-        action :install
 end
