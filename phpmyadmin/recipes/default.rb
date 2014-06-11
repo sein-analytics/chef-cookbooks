@@ -74,7 +74,7 @@ end
 bash 'extract-php-myadmin' do
 	user user
 	group group
-	cwd home
+	cwd '/tmp'
 	code <<-EOH
 		rm -fr *
 		tar xzf #{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages.tar.gz
