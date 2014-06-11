@@ -1,5 +1,6 @@
 
-temp_path = Chef::Config['file_cache_path'] = "/tmp"
+temp_path = Chef::Config['file_cache_path']
+Chef::Config['file_cache_path'] = "/tmp"
 
 include_recipe "phpmyadmin"
 
