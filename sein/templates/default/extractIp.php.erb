@@ -1,0 +1,16 @@
+<?php
+
+set_time_limit(30);
+
+$port=4730;
+
+$in_json = file_get_contents('php://stdin');
+
+$arr = json_decode($in_json);
+
+foreach($arr->Instances as $instance) {
+    if(!is_null($instance->PrivateIp))
+        $private_ips[] = "{$instance->PrivateIp}:$port";
+}
+
+echo implode(',', $private_ips);
