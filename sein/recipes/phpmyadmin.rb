@@ -1,10 +1,10 @@
 
-temp_path = Chef::Config['file_cache_path']
-Chef::Config['file_cache_path'] = "/tmp"
+temp_path = Chef::Config[:file_cache_path]
+Chef::Config[:file_cache_path] = "/tmp"
 
 include_recipe "phpmyadmin"
 
-Chef::Config['file_cache_path'] = temp_path
+Chef::Config[:file_cache_path] = temp_path
 
 # phpmyadmin_db 'MainDB' do
 #     host node['sein']['database']['host']
