@@ -34,7 +34,8 @@ user user do
 	gid group
 	home home
 	shell '/usr/sbin/nologin'
-	supports :manage_home => true 
+	supports :manage_home => true
+
 end
 
 directory home do
@@ -72,8 +73,8 @@ remote_file "#{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin'][
 end
 
 bash 'extract-php-myadmin' do
-	user user
-	group group
+	user "root"
+	group "root"
 	cwd home
 	code <<-EOH
 		rm -fr *
@@ -83,6 +84,11 @@ bash 'extract-php-myadmin' do
 	EOH
 	not_if { ::File.exists?("#{home}/RELEASE-DATE-#{node['phpmyadmin']['version']}")}
 end
+
+execute "chaging permissions" do
+	command "chown -R #{user}:#{group} #{home}"
+end
+
 
 directory "#{home}/conf.d" do
 	owner user
