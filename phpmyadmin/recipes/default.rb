@@ -71,21 +71,36 @@ remote_file "#{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin'][
   checksum node['phpmyadmin']['checksum']
 end
 
+# code_str = <<-EOH
+# 	rm -fr *
+# 	tar xzf #{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages.tar.gz
+# 	mv phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages/* #{home}/
+# 	rm -fr phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages
+# 	EOH
+
 code_str = <<-EOH
-	rm -fr *
-	tar xzf #{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages.tar.gz
-	mv phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages/* #{home}/
+	rm -fr * && \
+	tar xzf #{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages.tar.gz && \
+	mv phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages/* #{home}/ && \
 	rm -fr phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages
 	EOH
+
 Chef::Log.info(code_str)
 
 
-bash 'extract-php-myadmin' do
+# bash 'extract-php-myadmin' do
+# 	user user
+# 	group group
+# 	cwd home
+# 	code code_str
+# 	not_if { ::File.exists?("#{home}/RELEASE-DATE-#{node['phpmyadmin']['version']}")}
+# end
+
+execute "extracting pma" do
 	user user
 	group group
 	cwd home
-	code code_str
-	not_if { ::File.exists?("#{home}/RELEASE-DATE-#{node['phpmyadmin']['version']}")}
+	command code_str
 end
 
 directory "#{home}/conf.d" do
