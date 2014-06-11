@@ -73,8 +73,8 @@ remote_file "#{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin'][
 end
 
 bash 'extract-php-myadmin' do
-	user "root"
-	group "root"
+	user user
+	group group
 	cwd home
 	code <<-EOH
 		rm -fr *
@@ -85,9 +85,9 @@ bash 'extract-php-myadmin' do
 	not_if { ::File.exists?("#{home}/RELEASE-DATE-#{node['phpmyadmin']['version']}")}
 end
 
-execute "chaging permissions" do
-	command "chown -R #{user}:#{group} #{home}"
-end
+# execute "chaging permissions" do
+# 	command "chown -R #{user}:#{group} #{home}"
+# end
 
 
 directory "#{home}/conf.d" do
@@ -108,7 +108,7 @@ template "#{home}/config.inc.php" do
 	source 'config.inc.php.erb'
 	owner user
 	group group
-	mode 00644 #changed to allow apahce to read the config file - ieally group should belomg to apache
+	mode 00644 #changed to allow apache to read the config file - ieally group should belomg to apache
 end
 
 if (node['phpmyadmin'].attribute?('fpm') && node['phpmyadmin']['fpm'])
