@@ -71,12 +71,12 @@ remote_file "#{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin'][
   checksum node['phpmyadmin']['checksum']
 end
 
-code_str <<-EOH
+code_str = <<-EOH
 	rm -fr *
 	tar xzf #{Chef::Config['file_cache_path']}/phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages.tar.gz
 	mv phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages/* #{home}/
 	rm -fr phpMyAdmin-#{node['phpmyadmin']['version']}-all-languages
-EOH
+	EOH
 Chef::Log.info(code_str)
 
 
