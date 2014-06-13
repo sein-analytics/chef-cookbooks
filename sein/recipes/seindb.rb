@@ -51,6 +51,6 @@ end
 execute 'load database' do
 	command "gunzip -c /vagrant_data/devops/resources/data_dump/zfia.sql.gz | mysql -u#{username} -p#{password} -h#{host} #{dbname}"
 	only_if {
-		load_db && (force_reload || shell_out("mysql -u root -p#{node[:mysql][:server_root_password]} -e 'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = \"#{dbname}\"\\G'").stdout.match(/COUNT\(\*\): (?<tables>\d+)/)['tables'].to_i < 0)
+		load_db && (force_reload || shell_out("mysql -u root -p#{node[:mysql][:server_root_password]} -e 'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = \"#{dbname}\"\\G'").stdout.match(/COUNT\(\*\): (\d+)/)[1].to_i < 0)
 	}
 end
