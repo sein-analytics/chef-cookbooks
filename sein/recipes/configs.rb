@@ -1,6 +1,6 @@
 COMPOSER_HOME = '/home/vagrant/.composer'
 
-directory "#{node[:sein][:project_root]}/data/logs" do
+directory "#{node[:sein][:phing][:project_root]}/data/logs" do
 	mode 0777
 	action :create
 	recursive true
