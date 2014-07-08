@@ -18,7 +18,7 @@ end
 	command_phing = lambda {
 		command = "/usr/local/zend/bin/phing builddev "
 		node[:sein][:phing].each do |name, prop|
-		    command += "-D#{name}=\"#{prop}\" " 
+		    command += "-D#{name}='#{prop}' " 
  		end
 
  		return command
