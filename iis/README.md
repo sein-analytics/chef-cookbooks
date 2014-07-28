@@ -36,7 +36,7 @@ Attributes
 Resource/Provider
 =================
 
-iis\_site
+iis_site
 ---------
 
 Allows easy management of IIS virtual sites (ie vhosts).
@@ -52,8 +52,6 @@ Allows easy management of IIS virtual sites (ie vhosts).
 ### Attribute Parameters
 
 - product_id: name attribute. Specifies the ID of a product to install.
-- accept_eula: specifies that WebpiCmdline should Auto-Accept Eula’s. default is false.
-
 - site_name: name attribute.
 - site_id: . if not given IIS generates a unique ID for the site
 - path: IIS will create a root application and a root virtual directory mapped to this specified local path
@@ -61,6 +59,9 @@ Allows easy management of IIS virtual sites (ie vhosts).
 - port: port site will listen on. default is 80
 - host_header: host header (also known as domains or host names) the site should map to. default is all host headers
 - options: additional options to configure the site
+- bindings: Advanced options to configure the information required for requests to communicate with a Web site. See http://www.iis.net/configreference/system.applicationhost/sites/site/bindings/binding for parameter format. When binding is used, port protocol and host_header should not be used.
+- application_pool: set the application pool of the site
+- options: support for additional options -logDir, -limits, -ftpServer, etc...
 
 ### Examples
 
@@ -87,7 +88,7 @@ Allows easy management of IIS virtual sites (ie vhosts).
       action [:add,:start]
     end
 
-iis\_config
+iis_config
 -----------
 Runs a config command on your IIS instance.
 
@@ -114,7 +115,7 @@ Runs a config command on your IIS instance.
         end
     end
 
-iis\_pool
+iis_pool
 ---------
 Creates an application pool in IIS.
 
@@ -149,7 +150,7 @@ Creates an application pool in IIS.
      end
 
 
-iis\_app
+iis_app
 --------
 
 Creates an application in IIS.
@@ -178,7 +179,7 @@ Creates an application in IIS.
       action :add
     end
 
-iis\_module
+iis_module
 --------
 
 Manages modules globally or on a per site basis.

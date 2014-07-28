@@ -1,9 +1,9 @@
 #
-# Author:: Seth Chisamore (<schisamo@opscode.com>)
+# Author:: Kevin Rivers (<kevin@kevinrivers.com>)
 # Cookbook Name:: iis
-# Recipe:: mod_security
+# Recipe:: mod_ftp
 #
-# Copyright 2011, Opscode, Inc.
+# Copyright 2014, Kevin Rivers
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,13 +21,13 @@
 include_recipe "iis"
 
 if Opscode::IIS::Helper.older_than_windows2008r2?
-  features = %w{Web-Url-Auth Web-Filtering Web-IP-Security}
+  features = %w{Web-Ftp-Server Web-Ftp-Service Web-Ftp-Ext}
 else
-  features = %w{IIS-URLAuthorization IIS-RequestFiltering IIS-IPSecurity}
+  features = %w{IIS-FTPServer IIS-FTPSvc IIS-FTPExtensibility}
 end
 
-features.each do |feature|
-  windows_feature feature do
+features.each do |f|
+  windows_feature f do
     action :install
   end
 end
