@@ -2,7 +2,8 @@ include_recipe "zendserver"
 
 apt_repository "gearman" do
         uri "http://ppa.launchpad.net/gearman-developers/ppa/ubuntu"
-        distribution node['lsb']['codename']
+        # distribution node['lsb']['codename']
+        distribution "raring" //At time of writing, ppa gearman does not have a trusty variant
         components ["main"]
         keyserver "keyserver.ubuntu.com"
         key "1C73E014"
