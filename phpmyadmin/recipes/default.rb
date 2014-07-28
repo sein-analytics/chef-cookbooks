@@ -34,8 +34,7 @@ user user do
 	gid group
 	home home
 	shell '/usr/sbin/nologin'
-	supports :manage_home => true
-
+	supports :manage_home => true 
 end
 
 directory home do
@@ -85,11 +84,6 @@ bash 'extract-php-myadmin' do
 	not_if { ::File.exists?("#{home}/RELEASE-DATE-#{node['phpmyadmin']['version']}")}
 end
 
-# execute "chaging permissions" do
-# 	command "chown -R #{user}:#{group} #{home}"
-# end
-
-
 directory "#{home}/conf.d" do
 	owner user
 	group group
@@ -108,7 +102,7 @@ template "#{home}/config.inc.php" do
 	source 'config.inc.php.erb'
 	owner user
 	group group
-	mode 00644 #changed to allow apache to read the config file - ieally group should belomg to apache
+	mode 00644
 end
 
 if (node['phpmyadmin'].attribute?('fpm') && node['phpmyadmin']['fpm'])
