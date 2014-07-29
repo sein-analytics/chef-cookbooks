@@ -1,6 +1,6 @@
-Alias /phpmyadmin <%= node['phpmyadmin']['home'] %>
+Alias /phpmyadmin <%= node['sein']['phpmyadmin_composer']['home'] %>/vendor/phpmyadmin/phpmyadmin
 
-<Directory "<%= node['phpmyadmin']['home'] %>">
+<Directory "<%= node['sein']['phpmyadmin_composer']['home'] %>/vendor/phpmyadmin/phpmyadmin">
     require all granted
 	allowoverride all
 </Directory>

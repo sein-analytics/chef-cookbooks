@@ -31,3 +31,7 @@ execute "increase php max exec time" do
   command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d max_execution_time -v 3600"
   notifies :run, 'execute[restart-api]'
 end
+
+link "/usr/bin/php" do
+  to "/usr/local/zend/bin/php"
+end

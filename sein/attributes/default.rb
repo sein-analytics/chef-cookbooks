@@ -49,3 +49,5 @@ default[:sein][:phing][:gearman_servers]				= '127.0.0.1:4730'
 
 default[:sein][:phing][:doctrine_cache_adapter_class]	= 'Doctrine\Common\Cache\ArrayCache'
 default[:sein][:phing][:doctrine_autogenerate_classes]  = 'true'
+
+default[:sein][:phpmyadmin_composer][:home] = "/opt/phpmyadmin"
