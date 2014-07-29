@@ -1,7 +1,6 @@
 Alias /phpmyadmin <%= node['phpmyadmin']['home'] %>
 
 <Directory "<%= node['phpmyadmin']['home'] %>">
-	order allow,deny
-	allow from all
+    require all granted
 	allowoverride all
 </Directory>
