@@ -1,6 +1,6 @@
 require 'chef/provider/lwrp_base'
 require 'shellwords'
-require './helpers.rb'
+require File.join(File.expand_path(File.dirname(__FILE__)), 'helpers')
 
 extend Opscode::Mysql::Helpers
 
