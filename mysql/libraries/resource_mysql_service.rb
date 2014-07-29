@@ -1,5 +1,5 @@
 require 'chef/resource/lwrp_base'
-require './helpers'
+require './helpers.rb'
 
 extend Opscode::Mysql::Helpers
 #

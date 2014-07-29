@@ -1,6 +1,6 @@
 require 'chef/provider/lwrp_base'
 require 'shellwords'
-require './helpers'
+require './helpers.rb'
 
 extend Opscode::Mysql::Helpers
 
