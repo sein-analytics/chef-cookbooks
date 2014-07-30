@@ -1,0 +1,26 @@
+DEPENDENCIES
+  apt
+  minitest-handler
+  smartstack
+    path: .
+    metadata: true
+
+GRAPH
+  apt (2.3.8)
+  build-essential (2.0.0)
+  chef_handler (1.1.6)
+  java (1.22.0)
+  minitest-handler (1.1.4)
+    chef_handler (>= 0.0.0)
+  ruby (0.9.2)
+  runit (1.5.10)
+    build-essential (>= 0.0.0)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
+  smartstack (0.5.0)
+    java (>= 0.0.0)
+    ruby (~> 0.9.2)
+    runit (>= 1.1.0)
+  yum (3.2.0)
+  yum-epel (0.3.6)
+    yum (~> 3.0)
