@@ -12,7 +12,8 @@ default.smartstack.services.mysql = {
 	    'server_options' => 'check inter 1s rise 1 fall 1',
 	    'listen' => [
 	      'mode tcp'
-	    ]
+	    ],
+	    'server_port_override' => 3306
 	  },
 	}
 }
