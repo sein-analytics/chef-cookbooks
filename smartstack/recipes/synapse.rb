@@ -70,6 +70,8 @@ else
   end
 end
 
+Chef::Log.info "SYNAPSE_CONF #{node.synapse.enabled_services}"
+
 # add the enabled services to the synapse config
 # we do this here to avoid wierdness with attribute load order
 node.synapse.enabled_services.each do |service_name|
