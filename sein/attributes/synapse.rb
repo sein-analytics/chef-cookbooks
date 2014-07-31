@@ -15,8 +15,8 @@ default.smartstack.services.mysql = {
           'mode tcp'
         ]
       },
-    },
-
+    }
+  }
 }
 
 default.synapse.enabled_services = ['mysql']
