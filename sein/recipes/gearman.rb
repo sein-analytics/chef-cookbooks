@@ -1,5 +1,3 @@
-include_recipe "zendserver"
-
 apt_repository "gearman" do
         uri "http://ppa.launchpad.net/gearman-developers/ppa/ubuntu"
         # distribution node['lsb']['codename']
@@ -33,9 +31,5 @@ EOH
 end
 
 service "gearman-job-server" do
-        action :stop
-end
-
-service "gearman-job-server" do
-        action :start
+        action :restart
 end

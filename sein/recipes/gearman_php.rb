@@ -1,3 +1,5 @@
+include_recipe "zendserver"
+
 # pecl extension
 zendserver_pear "gearman" do
         action :install
