@@ -21,6 +21,7 @@ execute "create-api-key" do
   retries 5
   retry_delay 5
   ignore_failure false
+  returns [0,1]
   not_if { is_server_bootstrapped(node[:zendserver][:apikeyname], node[:zendserver][:apikeysecret]) }
 end	
 
