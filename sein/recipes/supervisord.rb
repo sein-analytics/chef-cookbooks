@@ -15,6 +15,6 @@ directory "/opt/sein/" do
 end
 
 template "/etc/supervisor/conf.d/seinworkers.conf" do
-	source "seinworkers.conf"
+	source "seinworkers.conf.erb"
 	notifies :restart, 'service[supervisor]', :delayed
 end
