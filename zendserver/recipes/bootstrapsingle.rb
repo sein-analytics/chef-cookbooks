@@ -24,6 +24,8 @@ execute "create-api-key" do
   not_if { is_server_bootstrapped(node[:zendserver][:apikeyname], node[:zendserver][:apikeysecret]) }
 end	
 
+Chef::Log.info("Bootstap command: #{bs_command}")
+
 execute "bootstrap-single-server" do
   command bs_command
   ignore_failure false
