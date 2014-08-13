@@ -1,4 +1,5 @@
 include_recipe "zendserver::single"
+include_recipe "zendserver::restart"
 
 zendserver_pear "mongo" do
   action :install
