@@ -4,5 +4,5 @@ sudo "seinworkers" do
 	user "zend"
 	runas "root"
 	nopasswd true
-	commands ["/usr/bin/supervisorctl restart seinworkers\\:"]
+	commands ['/usr/bin/supervisorctl restart seinworkers\:']
 end
