@@ -31,5 +31,6 @@ EOH
 end
 
 service "gearman-job-server" do
-        action :restart
+    provider Chef::Provider::Service::Upstart
+    action :restart
 end
