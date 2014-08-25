@@ -28,12 +28,12 @@ execute "increase php memory" do
 end
 
 execute "increase max post size" do
-  command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d post_max_size -v 2G"
+  command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d post_max_size -v 2048M"
   notifies :run, 'execute[restart-api]'
 end
 
-execute "increase max post size" do
-  command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d upload_max_filesize -v 2G"
+execute "increase max uplaod file size" do
+  command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d upload_max_filesize -v 2048M"
   notifies :run, 'execute[restart-api]'
 end
 
