@@ -1,6 +1,6 @@
 [program:replicator]
 process_name=%(program_name)s_%(process_num)02d
-command="/usr/local/zend/bin/php /opt/sein/current/vendor/bin/zf.php start worker sein_replicator"
+command=/usr/local/zend/bin/php /opt/sein/current/vendor/bin/zf.php start worker sein_replicator
 numprocs=2
 autorestart=true
 startretries=2
@@ -8,7 +8,7 @@ environment=ZF_CONFIG_FILE="/opt/sein/current/application/configs/zf.ini",ZEND_T
 
 [program:forecast]
 process_name=%(program_name)s_%(process_num)02d
-command="/opt/sein/current/vendor/bin/zf.php start worker sein_forecast"
+command=/usr/local/zend/bin/php /opt/sein/current/vendor/bin/zf.php start worker sein_forecast
 numprocs=6
 autorestart=true
 startretries=2
