@@ -16,16 +16,14 @@ bs_command << " -r #{production}" unless production.nil? || production.empty?
 bs_command << " -e #{admin_email}" unless admin_email.nil? || admin_email.empty?
 bs_command << " -d #{devpassword}" unless dev_password.nil? || dev_password.empty?
 
+
 execute "create-api-key" do
   command "/usr/local/zend/bin/zs-manage api-keys-add-key -n #{node[:zendserver][:apikeyname]} -s #{node[:zendserver][:apikeysecret]}"
   retries 5
   retry_delay 5
   ignore_failure false
-  returns [0,1]
   not_if { is_server_bootstrapped(node[:zendserver][:apikeyname], node[:zendserver][:apikeysecret]) }
 end	
-
-Chef::Log.info("Bootstap command: #{bs_command}")
 
 execute "bootstrap-single-server" do
   command bs_command

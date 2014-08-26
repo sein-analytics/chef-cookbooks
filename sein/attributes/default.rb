@@ -1,5 +1,6 @@
 default[:sein][:server_name]					= 'sein.vagrant'
 default[:sein][:server_aliases]					= ['sein']
+default[:sein][:zend_server][:cluster]			= false
 
 default[:sein][:phing][:project_root]					= '/vagrant_data'
 

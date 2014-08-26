@@ -42,6 +42,13 @@ Attributes
     <td><tt>5.4</tt></td>
   </tr>
   <tr>
+    <td><tt>['zendserver']['nginx']</tt></td>
+    <td>boolean</td>
+    <td>Set in you are using Nginx instead of Apache true or false boolean</td>
+    <td>No</td>
+    <td><tt>false</tt></td>
+  </tr>
+  <tr>
     <td><tt>['zendserver']['ordernumber']</tt></td>
     <td>string</td>
     <td>The order number part of the license information (if not provided, will bootstrap in enterprise trial)</td>
@@ -65,7 +72,7 @@ Attributes
   <tr>
     <td><tt>['zendserver']['apikeyname']</tt></td>
     <td>string</td>
-    <td>Name fort the web API key that the installer creates. The api key is required for all management functionality</td>
+    <td>Name for the web API key that the installer creates. The api key is required for all management functionality</td>
     <td>Yes</td>
     <td><tt>-</tt></td>
   </tr>
@@ -75,6 +82,13 @@ Attributes
     <td>A 64 character key used for signing API requests</td>
     <td>Yes</td>
     <td><tt>-</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['zendserver']['adminpassword']</tt></td>
+    <td>string</td>
+    <td>A 4-20 character password for the admin user (use this to log into the Zend Server GUI).</a</td>
+    <td>No</td>
+    <td><tt>p2ssw0rd1</tt></td>
   </tr>
   <tr>
     <td><tt>['zendserver']['adminemail']</tt></td>
@@ -186,7 +200,7 @@ Contributing
 #### e.g.
   1. Fork the repository on Github
   2. Create a named feature branch (like `add_component_x`)
-  3. Write you change
+  3. Write your change
   4. Write tests for your change (if applicable)
   5. Run the tests, ensuring they all pass
   6. Submit a Pull Request using Github
