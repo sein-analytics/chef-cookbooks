@@ -1,3 +1,4 @@
+include_recipe "sein::synapse"
 include_recipe  (node[:sein][:zend_server][:cluster] && "zendserver::cluster") || "zendserver::single"
 include_recipe "zendserver::restart"
 
@@ -28,12 +29,12 @@ execute "increase php memory" do
 end
 
 execute "increase max post size" do
-  command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d post_max_size -v 2048M"
+  command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d post_max_size -v 200M"
   notifies :run, 'execute[restart-api]'
 end
 
 execute "increase max uplaod file size" do
-  command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d upload_max_filesize -v 2048M"
+  command "/usr/local/zend/bin/zs-manage store-directive -N #{node[:zendserver][:apikeyname]} -K #{node[:zendserver][:apikeysecret]} -d upload_max_filesize -v 200M"
   notifies :run, 'execute[restart-api]'
 end
 
