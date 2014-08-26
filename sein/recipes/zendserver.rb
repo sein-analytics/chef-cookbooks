@@ -1,4 +1,3 @@
-include_recipe "sein::synapse"
 include_recipe  (node[:sein][:zend_server][:cluster] && "zendserver::cluster") || "zendserver::single"
 include_recipe "zendserver::restart"
 
