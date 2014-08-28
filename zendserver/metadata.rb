@@ -4,11 +4,10 @@ maintainer_email 'maurice.k@zend.com'
 license          'All rights reserved'
 description      'Installs/Configures zendserver'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.0.0'
+version          '1.1.0'
 
 depends "apt"
 depends "yum"
-# depends "rightscale"
 
 recipe "zendserver", "Adds the Zend Server repo and installs the package"
 recipe "zendserver::single", "Install & bootstrap in 1 step"
@@ -23,25 +22,41 @@ attribute "zendserver/url",
   :required => "optional",
   :default => "http://repos.zend.com/zend-server/",
   :recipes => [ 
-      "zendserver::install"
+      "zendserver::default"
   ]
 
 attribute "zendserver/version",
   :display_name => "Zend Server version",
   :description => "The version to install - must be a valid repository version",
   :required => "optional",
-  :default => "6.1",
+  :default => "7.0",
   :recipes => [ 
-      "zendserver::install"
+      "zendserver::default"
   ]
 
 attribute "zendserver/phpversion",
   :display_name => "PHP version",
   :description => "The PHP version to install - must be a valid PHP version for the Zend Server selected version",
   :required => "optional",
-  :default => "5.4",
+  :default => "5.5",
   :recipes => [ 
-      "zendserver::install"
+      "zendserver::default"
+  ]
+
+attribute "zendserver/basedirdeb",
+  :display_name => "Debian base directory",
+  :description  => "The base directory to use from the repo. Useful on debian to use apache 2.4, or for early access",
+  :required => "optional",
+  :recipes    => [
+    "zendserver::default"
+  ]
+
+attribute "zendserver/basedirrpm",
+  :display_name => "RPM base directory",
+  :description  => "The base directory to use from the repo.",
+  :required => "optional",
+  :recipes    => [
+    "zendserver::default"
   ]
 
 attribute "zendserver/adminpassword",
@@ -132,6 +147,14 @@ attribute "zendserver/dbusername",
 attribute "zendserver/dbpassword",
   :display_name => "MySQL password",
   :description  => "The MySQL password",
+  :required => "optional",
+  :recipes    => [
+    "zendserver::joincluster"
+  ]
+
+attribute "zendserver/dbname",
+  :display_name => "Database name",
+  :description  => "The MySQL database name to use (Default: ZendServer)",
   :required => "optional",
   :recipes    => [
     "zendserver::joincluster"
