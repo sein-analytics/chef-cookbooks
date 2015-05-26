@@ -3,13 +3,14 @@ include_recipe "database::mysql"
 force_reload = node['sein']['database']['force_reload']
 load_db      = node['sein']['database']['load_db']
 dbname 		 = node['sein']['database']['name']
+root_user    = node['sein']['database']['root_user']
 username     = node['sein']['database']['user']
 password     = node['sein']['database']['password']
 host 		 = node['sein']['database']['host']
 
 mysql_connection = {
 	:host => host, 
-	:username => 'root', 
+	:username => root_user, 
 	:password => node[:mysql][:server_root_password]
 }
 

@@ -52,3 +52,5 @@ default[:sein][:phing][:doctrine_cache_adapter_class]	= 'Doctrine\Common\Cache\A
 default[:sein][:phing][:doctrine_autogenerate_classes]  = 'true'
 
 default[:sein][:phpmyadmin_composer][:home] = "/opt/phpmyadmin"
+
+default[:sein][:database][:root_user] = "root"
