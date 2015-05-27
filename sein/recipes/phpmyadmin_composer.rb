@@ -22,7 +22,7 @@ end
 template "/#{node['sein']['phpmyadmin_composer']['home']}/vendor/phpmyadmin/phpmyadmin/config.inc.php" do
 	source "pma_config.php.erb"
 	variables({
-		:host => node['sein']['database']['host'],
+		:servers => node[:sein][:pma][:servers],
 		:auth_type => 'cookie'
 	})
-end 
+end

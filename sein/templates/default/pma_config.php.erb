@@ -9,17 +9,17 @@
 $i = 0;
 
 /* Server: localhost [1] */
-$i++;
-$cfg['Servers'][$i]['verbose'] = '';
-$cfg['Servers'][$i]['host'] = '<%= @host %>';
-$cfg['Servers'][$i]['port'] = '<%= @port %>';
-$cfg['Servers'][$i]['socket'] = '';
-$cfg['Servers'][$i]['connect_type'] = 'tcp';
-$cfg['Servers'][$i]['auth_type'] = '<%= @auth_type %>';
-$cfg['Servers'][$i]['user'] = 'root';
-$cfg['Servers'][$i]['password'] = '';
-
-/* End of servers configuration */
+<% @servers.each do |server| %>
+    $i++;
+    $cfg['Servers'][$i]['verbose'] = '';
+    $cfg['Servers'][$i]['host'] = '<%= server.host %>';
+    $cfg['Servers'][$i]['port'] = '<%= server.port %>';
+    $cfg['Servers'][$i]['socket'] = '';
+    $cfg['Servers'][$i]['connect_type'] = 'tcp';
+    $cfg['Servers'][$i]['auth_type'] = '<%= @auth_type %>';
+    $cfg['Servers'][$i]['user'] = '<%= server.user %>';
+    $cfg['Servers'][$i]['password'] = '';
+<% end -%>
 
 $cfg['blowfish_secret'] = '53d7c2559d9252.81937744';
 $cfg['DefaultLang'] = 'en';

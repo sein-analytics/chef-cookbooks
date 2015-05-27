@@ -37,18 +37,6 @@ end
 	end
 end
 
-# Grant privileges to the username to create _db_manager_database_
-['localhost', '%'].each do |h|
-	mysql_database_user username do
-	  connection mysql_connection
-	  password password
-	  database_name '_db_manager_database_%'
-	  privileges [:all]
-	  host h
-	  action :grant
-	end
-end
-
 execute 'load database' do
 	command "gunzip -c /vagrant_data/devops/resources/data_dump/zfia.sql.gz | mysql -u#{username} -p#{password} -h#{host} #{dbname}"
 	only_if {
