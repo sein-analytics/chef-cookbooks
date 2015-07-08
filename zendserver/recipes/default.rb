@@ -32,7 +32,7 @@ when "debian"
     components ["server","non-free"]
     key "http://repos.zend.com/zend.key"
     action :add
-    notifies :run, "execute[apt-get update]", :immediately
+#    notifies :run, "execute[apt-get update]", :immediately
     end
 when "rhel"
   # do things on RHEL platforms (redhat, centos, scientific, etc)
